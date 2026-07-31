@@ -135,3 +135,20 @@ body {
     font-size: 40px;
   }
 }
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+canvas {
+  backface-visibility: hidden;
+}

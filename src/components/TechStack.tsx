@@ -13,20 +13,21 @@ import {
 
 const textureLoader = new THREE.TextureLoader();
 const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+    "/images/aws.webp",
+    "/images/linux.webp",
+    "/images/git.webp",
+    "/images/github.webp",
+    "/images/docker.webp",
+    "/images/jenkins.webp",
+    "/images/terraform.webp",
+    "/images/python.webp",
+
 ];
 const textures = imageUrls.map((url) => textureLoader.load(url));
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
-const spheres = [...Array(30)].map(() => ({
+const spheres = [...Array(12)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
 
@@ -168,15 +169,29 @@ const TechStack = () => {
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <h2> My DevOps Tech Stack</h2>
 
       <Canvas
-        shadows
-        gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
-        camera={{ position: [0, 0, 20], fov: 32.5, near: 1, far: 100 }}
-        onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}
-        className="tech-canvas"
-      >
+  shadows={false}
+  dpr={[1, 1.5]}
+  gl={{
+    alpha: true,
+    stencil: false,
+    depth: false,
+    antialias: false,
+    powerPreference: "high-performance",
+  }}
+  camera={{
+    position: [0, 0, 20],
+    fov: 32.5,
+    near: 1,
+    far: 100,
+  }}
+  onCreated={(state) => {
+    state.gl.toneMappingExposure = 1.5;
+  }}
+  className="tech-canvas"
+>
         <ambientLight intensity={1} />
         <spotLight
           position={[20, 20, 25]}

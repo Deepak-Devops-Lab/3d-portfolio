@@ -13,9 +13,11 @@ const Navbar = () => {
     smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
-      smooth: 1.7,
-      speed: 1.7,
-      effects: true,
+      smooth: 1.1,
+      speed: 1,
+      effects: false,
+      normalizeScroll: true,
+      smoothTouch: 0.1,
       autoResize: true,
       ignoreMobileResize: true,
     });
@@ -42,17 +44,17 @@ const Navbar = () => {
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          AM
+      <a href="#landingDiv" className="navbar-title" data-cursor="disable">
+          DK
         </a>
         <a
-          href="https://www.linkedin.com/in/akashrmalhotra/"
+          href="https://github.com/Deepak-Devops-Lab"
           className="navbar-connect"
           data-cursor="disable"
           target="_blank"
           rel="noreferrer"
         >
-          linkedin.com/in/akashrmalhotra
+          github.com/Deepak-Devops-Lab
         </a>
         <ul>
           <li>
@@ -62,7 +64,7 @@ const Navbar = () => {
           </li>
           <li>
             <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
+              <HoverLinks text="PROJECTS" />
             </a>
           </li>
           <li>

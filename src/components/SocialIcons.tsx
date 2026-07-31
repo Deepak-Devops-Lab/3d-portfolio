@@ -1,27 +1,39 @@
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedinIn,
-  FaYoutube,
-} from "react-icons/fa6";
-import "./styles/SocialIcons.css";
-import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
+import {
+  FaEnvelope,
+  FaGithub,
+  FaGlobe,
+} from "react-icons/fa6";
+import { TbNotes } from "react-icons/tb";
+
 import HoverLinks from "./HoverLinks";
+import "./styles/SocialIcons.css";
 
 const SocialIcons = () => {
   useEffect(() => {
-    const social = document.getElementById("social") as HTMLElement;
+    const social = document.getElementById("social");
+
+    if (!social) {
+      return;
+    }
+
+    const cleanupFunctions: Array<() => void> = [];
 
     social.querySelectorAll("span").forEach((item) => {
-      const elem = item as HTMLElement;
-      const link = elem.querySelector("a") as HTMLElement;
+      const element = item as HTMLElement;
+      const link = element.querySelector("a");
 
-      const rect = elem.getBoundingClientRect();
+      if (!link) {
+        return;
+      }
+
+      let animationFrameId = 0;
+      let rect = element.getBoundingClientRect();
+
       let mouseX = rect.width / 2;
       let mouseY = rect.height / 2;
-      let currentX = 0;
-      let currentY = 0;
+      let currentX = mouseX;
+      let currentY = mouseY;
 
       const updatePosition = () => {
         currentX += (mouseX - currentX) * 0.1;
@@ -30,14 +42,22 @@ const SocialIcons = () => {
         link.style.setProperty("--siLeft", `${currentX}px`);
         link.style.setProperty("--siTop", `${currentY}px`);
 
-        requestAnimationFrame(updatePosition);
+        animationFrameId = requestAnimationFrame(updatePosition);
       };
 
-      const onMouseMove = (e: MouseEvent) => {
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+      const handleMouseMove = (event: MouseEvent) => {
+        rect = element.getBoundingClientRect();
 
-        if (x < 40 && x > 10 && y < 40 && y > 5) {
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        const isInside =
+          x >= 0 &&
+          x <= rect.width &&
+          y >= 0 &&
+          y <= rect.height;
+
+        if (isInside) {
           mouseX = x;
           mouseY = y;
         } else {
@@ -46,63 +66,71 @@ const SocialIcons = () => {
         }
       };
 
-      document.addEventListener("mousemove", onMouseMove);
-
+      document.addEventListener("mousemove", handleMouseMove);
       updatePosition();
 
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
+      cleanupFunctions.push(() => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        cancelAnimationFrame(animationFrameId);
+      });
     });
+
+    return () => {
+      cleanupFunctions.forEach((cleanup) => cleanup());
+    };
   }, []);
 
   return (
     <div className="icons-section">
-      <div className="social-icons" data-cursor="icons" id="social">
+      <div
+        className="social-icons"
+        data-cursor="icons"
+        id="social"
+      >
         <span>
           <a
-            href="https://github.com/akashrmalhotra"
+            href="https://github.com/Deepak-Devops-Lab"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Open Deepak's GitHub profile"
+            title="GitHub"
           >
             <FaGithub />
           </a>
         </span>
+
         <span>
           <a
-            href="https://www.linkedin.com/in/akashrmalhotra/"
-            target="_blank"
-            rel="noreferrer"
+            href="mailto:dk.kumar201306@gmail.com"
+            aria-label="Send an email to Deepak"
+            title="Email"
           >
-            <FaLinkedinIn />
+            <FaEnvelope />
           </a>
         </span>
+
         <span>
           <a
-            href="https://www.youtube.com/@Leftbraincoder"
+            href="https://deepakdevops.site"
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Open Deepak's portfolio website"
+            title="Portfolio"
           >
-            <FaYoutube />
-          </a>
-        </span>
-        <span>
-          <a
-            href="https://www.instagram.com/leftbraincoder/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaInstagram />
+            <FaGlobe />
           </a>
         </span>
       </div>
+
       <a
         className="resume-button"
-        href="/Akash_Malhotra.pdf"
+        href="/Deepak-Kumar-Tanti-Resume.pdf"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
+        aria-label="Open Deepak Kumar Tanti's resume"
       >
         <HoverLinks text="RESUME" />
+
         <span>
           <TbNotes />
         </span>

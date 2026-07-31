@@ -329,3 +329,140 @@
     max-height: 250px;
   }
 }
+/* Professional project content */
+
+.carousel-description {
+  margin-top: 16px;
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.project-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.project-button svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.project-github-button {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.project-github-button:hover {
+  transform: translateY(-4px);
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #080808;
+  box-shadow: 0 12px 35px rgba(255, 255, 255, 0.16);
+}
+
+.project-live-button {
+  background: rgba(0, 191, 255, 0.12);
+  border-color: rgba(0, 191, 255, 0.45);
+  color: #67d9ff;
+}
+
+.project-live-button:hover {
+  transform: translateY(-4px);
+  background: #00bfff;
+  border-color: #00bfff;
+  color: #031218;
+  box-shadow: 0 12px 35px rgba(0, 191, 255, 0.28);
+}
+
+/* Improved project image hover */
+
+.work-image {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.work-image-in {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 20px;
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.work-image-in img {
+  display: block;
+  width: 100%;
+  transition:
+    transform 0.55s ease,
+    filter 0.55s ease;
+}
+
+.work-image-in:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.4),
+    0 0 35px rgba(0, 191, 255, 0.14);
+}
+
+.work-image-in:hover img {
+  transform: scale(1.045);
+  filter: brightness(0.82);
+}
+
+.work-link {
+  z-index: 5;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.work-image-in:hover .work-link {
+  transform: rotate(45deg) scale(1.08);
+}
+
+@media only screen and (max-width: 768px) {
+  .carousel-description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .project-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .project-button {
+    width: 100%;
+  }
+}
