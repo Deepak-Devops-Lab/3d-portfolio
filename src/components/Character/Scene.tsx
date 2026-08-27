@@ -106,26 +106,41 @@ const Scene = () => {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
-      const animate = () => {
-        requestAnimationFrame(animate);
-        if (headBone) {
-          handleHeadRotation(
-            headBone,
-            mouse.x,
-            mouse.y,
-            interpolation.x,
-            interpolation.y,
-            THREE.MathUtils.lerp
-          );
-          light.setPointLight(screenLight);
-        }
-        const delta = clock.getDelta();
-        if (mixer) {
-          mixer.update(delta);
-        }
-        renderer.render(scene, camera);
-      };
-      animate();
+      let animationFrameId: number;
+let isDisposed = false;
+
+renderer.setClearColor(0x000000, 0);
+renderer.autoClear = true;
+
+const animate = () => {
+  if (isDisposed) return;
+
+  animationFrameId = window.requestAnimationFrame(animate);
+
+  if (headBone) {
+    handleHeadRotation(
+      headBone,
+      mouse.x,
+      mouse.y,
+      interpolation.x,
+      interpolation.y,
+      THREE.MathUtils.lerp
+    );
+
+    light.setPointLight(screenLight);
+  }
+
+  const delta = clock.getDelta();
+
+  if (mixer) {
+    mixer.update(delta);
+  }
+
+  renderer.clear();
+  renderer.render(scene, camera);
+};
+
+animate();
       return () => {
         clearTimeout(debounce);
         scene.clear();

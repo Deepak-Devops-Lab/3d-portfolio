@@ -3,6 +3,7 @@ import {
   FaEnvelope,
   FaGithub,
   FaGlobe,
+  FaLinkedin,
 } from "react-icons/fa6";
 import { TbNotes } from "react-icons/tb";
 
@@ -98,6 +99,17 @@ const SocialIcons = () => {
             <FaGithub />
           </a>
         </span>
+        <span>
+  <a
+    href="https://www.linkedin.com/in/deepak-kumar-tanti/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Open Deepak's LinkedIn profile"
+    title="LinkedIn"
+  >
+    <FaLinkedin />
+  </a>
+</span>
 
         <span>
           <a

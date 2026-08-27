@@ -91,7 +91,7 @@
   font-weight: 600;
   line-height: 15px;
   letter-spacing: 4px;
-  text-wrap: nowrap;
+  white-space: nowrap;
 
   cursor: pointer;
   pointer-events: auto;
@@ -151,7 +151,6 @@
   .landing-actions {
     margin-left: 0;
   }
-}
 
   .resume-button {
     right: 10px;
