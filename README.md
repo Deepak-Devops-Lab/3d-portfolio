@@ -4,7 +4,7 @@ This repository contains the source code for a personal 3D portfolio built with 
 
 Live site: [http://deepakdevops.site/]
 
-![Portfolio Preview](public/images/preview1.png)
+![Portfolio Preview]
 
 ## Table of Contents
 
