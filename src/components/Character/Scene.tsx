@@ -106,7 +106,7 @@ const Scene = () => {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
-      let animationFrameId: number;
+
 let isDisposed = false;
 
 renderer.setClearColor(0x000000, 0);
@@ -115,7 +115,7 @@ renderer.autoClear = true;
 const animate = () => {
   if (isDisposed) return;
 
-  animationFrameId = window.requestAnimationFrame(animate);
+  window.requestAnimationFrame(animate);
 
   if (headBone) {
     handleHeadRotation(
