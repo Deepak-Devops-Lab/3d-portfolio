@@ -1,11 +1,11 @@
-<img width="1920" height="1080" alt="preview1" src="https://github.com/user-attachments/assets/6959dc7e-ae43-478b-874a-16198ab4b46b" />
+
 # 3D Portfolio Website
 
 This repository contains the source code for a personal 3D portfolio built with React, TypeScript, Three.js, React Three Fiber, and GSAP. It includes animated page sections, a character scene, custom cursor interactions, and smooth transitions designed for a modern portfolio experience.
 
 Live site: [http://deepakdevops.site/]
 
-![Portfolio Preview] (preview1.png)
+![Portfolio Preview] <img width="1920" height="1080" alt="preview1" src="https://github.com/user-attachments/assets/6959dc7e-ae43-478b-874a-16198ab4b46b" />
 
 ## Table of Contents
 
